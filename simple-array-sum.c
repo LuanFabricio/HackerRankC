@@ -2,9 +2,6 @@
 
 int simpleArraySum(int ar_count, int* ar) {
     int resultado = 0;
-    /*
-     * Write your code here.
-     */
     for(int i = 0 ; i < ar_count ; i++)
         resultado += ar[i];
     return resultado;
