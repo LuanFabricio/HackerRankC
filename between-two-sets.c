@@ -3,25 +3,23 @@
 int getTotalX(int a_count, int* a, int b_count, int* b) {
     int i, j, div, c_count;
     c_count = 1;
-    int x = a[0]*a[a_count-1];
+    int x = a[1];
     int arr[100];
-    arr[0] = x;
-    x++;
-    for(i = 1 ; i < a_count ; i++){
+   while(x <= b[0]+1){
         div = 1;
         for(j = 0 ; j < b_count ; j++)
             if(b[j]%x != 0)
                 div = 0;
         if(div){
-            arr[c_count] = x;
-
-            printf("%i\n", arr[c_count]);
-            c_count++;
+            arr[c_count++] = x;
         }
         x++;
     }
     
-    return c_count;
+    for(i = 0 ; i < c_count ; i++)
+        printf("%i\n", arr[c_count]);
+
+    return 1;
 }
 
 int main(){
