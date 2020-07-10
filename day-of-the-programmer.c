@@ -3,37 +3,28 @@
 #include <string.h>
 
 char* dayOfProgrammer(int year) {
-    int mes[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-    int i, j;
-    int dias = 0;
-    char data = malloc(10*sizeof(char));
-    if(year%4 == 0)
-        mes[1]++;
-    
-    for(i = 0 ; i < 12 ; i++){
-        if(dias+mes[i]>256){
-            j = 256 - dias;
-            i++;
-            break;
-        }
-        else if(dias+mes[i] == 256){
-            dias += mes[i];
-            j = mes[i];
-            i++;
-            break;
-        }
-        dias += mes[i];
+    int bissexto = 0;
+    static char data[11]="12.09.0000\0";
+    if(year < 1917){
+
     }
+    else if(year == 1918){
 
-    strcat(data, j);
-    printf("%i.%i.%i\n", j, i, year);
+    }
+    else if(year > 1917){
+        if(year%400==0 || (year%4==0 && year%100!=0)) bissexto = 1;
+        if(!bissexto) data[1]='3';
+        data[6]=(char)(year/1000+48);
+        data[7]=(char)(year/100%10+48);
+        data[8]=(char)(year/10%10+48);
+        data[9]=(char)(year%10+48);
+    }
     return data;
-    
-
 }
 
 int main(){
-    printf("%s",dayOfProgrammer(2016));
-
+    printf("%s\n",dayOfProgrammer(2016));
+    printf("%s\n",dayOfProgrammer(1800));
+    printf("%s\n",dayOfProgrammer(2017));
     return 0;
 }
