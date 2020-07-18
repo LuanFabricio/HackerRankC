@@ -16,8 +16,8 @@ int countingValleys(int n, char* s) {
 			if(s[i]!=ultimo){
 				sequencia=0;
 			}
-	        }		       
-		if(sequencia>=1&&dif_mar>=2){
+	    }		       
+		if(sequencia>=1&&(dif_mar>=2||dif_mar>=-2)){
 			i++;
 			while(s[i]=='D'){
 				i++;
