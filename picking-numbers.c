@@ -1,41 +1,29 @@
 #include <stdio.h>
 
 int pickingNumbers(int a_count, int* a) {
-	int vet[100];
-	int quantNum, quantNumMax, vet_tamanho, valid;
-	quantNumMax = 0;
+	int vet[100] ;
+	int maxCount, vet_count, val;
+	maxCount = 0;
 	for(int i = 0 ; i < a_count ; i++){
-		quantNum = 0;
-		vet_tamanho = 1;
+		vet_count = 1;
 		vet[0] = a[i];
-		for(int j = 0 ; j < a_count ; j++){
-			if(j==i)
-				continue;
-			if((a[i]-a[j])<2&&(a[i]-a[j])>-2){
-				valid = 1;
-				for(int k = 0 ; k < vet_tamanho ; k++){
-					if((vet[k]-a[j])>=2||(vet[k]-a[j])<=-2){
-						break;
-						valid = 0;
-					}
-				}			
-				if(valid){
-					vet[vet_tamanho++]=a[j];
-					quantNum++;
+		for(int j = 0  ; j < a_count ; j++){
+			if(i == j)
+			 	continue;
+			val = 1;
+			for(int  k = 0 ; k < vet_count ; k++)
+				if(vet[k]-a[j]>1||vet[k]-a[j]<-1){
+					val = 0;
+					break;
 				}
-
-				// printf("%i,%i\n",i,j);
-			}
+			if(val)
+				vet[vet_count++]=a[j];
 		}
-		if(quantNum>quantNumMax){
-			printf("%i,%i\n",quantNum,a[i]);
-			quantNumMax=quantNum;
-			for(int z  = 0 ; z < vet_tamanho ; z++)
-				printf("%i, ", vet[z]);
-		}
+		if(vet_count>maxCount)
+			maxCount = vet_count;
 	}
-
-	return quantNumMax;
+	
+	return maxCount;
 }
 
 int main(){
