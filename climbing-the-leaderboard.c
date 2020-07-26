@@ -1,27 +1,38 @@
 #include <stdio.h>
-
+#include <stdlib.h>
 
 int* climbingLeaderboard(int scores_count, int* scores, int alice_count, int* alice, int* result_count) {
-	int aux[100000];
 	int i, j, aux_count;
-	aux[0] = scores[0];
-	aux_count=1;
-	for(i = 1 ; i < scores_count ; i++){
-		if(scores[i]==scores[i-1])
-			continue;
-		aux[aux_count++] = scores[i];
-	}
+	*result_count = alice_count;
+	int* alice_result = malloc(alice_count*sizeof(int));
 	for(i = 0 ; i < alice_count ; i++){
-		
+		aux_count=0;
+		for(j = 1 ;  j < scores_count+1 ; j++){
+			if(alice[i]>=scores[j-1]){
+					alice_result[i] = aux_count+1;
+					break;
+			}
+			if(scores[j]==scores[j-1])
+				continue;
+			else
+				aux_count++;
+		}
+		if(scores[j-1]!=scores[j-2])
+			aux_count++;
+		if(j==scores_count+1)
+			alice_result[i] = aux_count;
 	}
 
-	return ;
+	return alice_result;
 }
 
 int main(){
-	int scores[] = {100, 100, 50, 40, 40, 20, 10};
-	int arr[] = {5, 25, 50, 120};
+	int scores[] = {100, 90, 90, 80, 75, 60};
+	int arr[] = {50, 65, 77, 90, 102};
 	int count;
-	int* a = climbingLeaderboard(7, scores, 4, arr, &count);
+	int* a = climbingLeaderboard(6, scores, 5, arr, &count);
+	for(int i = 0 ; i  < count ; i++ )
+		printf("%i,",a[i]);
+	printf("\n");
 	return 0;
 }
