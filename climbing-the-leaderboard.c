@@ -1,33 +1,27 @@
 #include <stdio.h>
 
-int* insertSort(int list_count, int* list, int new_num){
-	int aux[100000];
-	int i = list_count-1;
-	while(new_num>list_count[i])		
-		i--;
-	
-	for()
-}
 
-int* quickSort(int list_count, int* list){
+int* climbingLeaderboard(int scores_count, int* scores, int alice_count, int* alice, int* result_count) {
 	int aux[100000];
-	int tamanho=1;
-	aux[0]=list[0];
-
-	// insertsort
-	for(int i = 1 ; i < list_count ; i++){
+	int i, j, aux_count;
+	aux[0] = scores[0];
+	aux_count=1;
+	for(i = 1 ; i < scores_count ; i++){
+		if(scores[i]==scores[i-1])
+			continue;
+		aux[aux_count++] = scores[i];
+	}
+	for(i = 0 ; i < alice_count ; i++){
 		
 	}
 
-	return aux;
-}
-
-int* climbingLeaderboard(int scores_count, int* scores, int alice_count, int* alice, int* result_count) {
-	// for(int i = 0 ; )
-
+	return ;
 }
 
 int main(){
-
+	int scores[] = {100, 100, 50, 40, 40, 20, 10};
+	int arr[] = {5, 25, 50, 120};
+	int count;
+	int* a = climbingLeaderboard(7, scores, 4, arr, &count);
 	return 0;
 }
