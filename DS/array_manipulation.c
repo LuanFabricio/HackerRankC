@@ -3,21 +3,22 @@
 
 long arrayManipulation(int n, int queries_rows, int queries_columns, int** queries) {
 
-    int* arr = malloc( sizeof(int) * n );
-    int maior = 0;
 
-    for ( int i = 0 ; i <  queries_rows ; i++ )
-        for( int k = queries[i][0]-1 ; k < queries[i][1] ; k++ ) {
+	int* arr = malloc( sizeof(int) * n );
+	    int maior = 0;
+	
+	    for ( int i = 0 ; i <  queries_rows ; i++ )
+	        for( int k = queries[i][0]-1 ; k < queries[i][1] ; k++ ) {
 
-            arr[k] += queries[i][2];
+        	    arr[k] += queries[i][2];
 
-            if ( maior < arr[k] ) maior = arr[k];
+	            if ( maior < arr[k] ) maior = arr[k];
 
-        }
+	        }
 
-    for ( int i = 0 ; i < n ; i++ ) printf("%i \n", arr[i]);
+	for ( int i = 0 ; i < n ; i++ ) printf("%i \n", arr[i]);
 
-    return maior;
+	return maior;
 
 }
 
